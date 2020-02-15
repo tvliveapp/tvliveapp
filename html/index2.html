@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type = "text/css" href="../css/video.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://releases.flowplayer.org/7.2.7/skin/skin.css">
+<!-- hls.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.10.1/hls.light.min.js"></script>
+<!-- flowplayer -->
+<script src="https://releases.flowplayer.org/7.2.7/flowplayer.min.js"></script>
+
+
+<style>
+
+/**************/
+
+
+
+</style>
+<script  src="../js/channels.js"></script>
+<script  src="../js/scrip.js"></script>
+</head>
+<body onload='onLoad()'>
+<div id='video' class="flowplayer fp-slim">
+   <video>
+<source type="application/x-mpegURL" src="https://59d7d6f47d7fc.streamlock.net/canale8/canale8/chunklist_w101245012.m3u8">
+<source type="video/mp4" src="//edge.flowplayer.org/bauhaus.mp4">
+   </video>
+</div>
+
+<script>
+        
+</script>
+<div id='chnSrch' class='chnSrch content'>
+<button id='dropdownBtn' class="dropdown-btn" onclick='openNav();'>M 
+    <i class="fa fa-caret-down"></i>
+  </button>
+</div>
+<div id='chnList' class='chnList content'>
+ 
+    
+  
+
+
+</div>
+  <!---div id="barChart_div" class='chContainer'>barChart_div (div1)</div>
+  <div id="barChart_div" class='chContainer'>barChart_div (div1)</div>
+  <div id="barChart_div" class='chContainer'>barChart_div (div1)</div>
+  <div id="barChart_div" class='chContainer'>barChart_div (div1)</div>
+  <div id="barChart_div" class='chContainer'>barChart_div (div1)</div--->
+
+<script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+
+var dropdown = document.getElementById("dropdownBtn");
+var chnSrch = document.getElementById("chnSrch");
+var dropdownContent = document.getElementById("chnList");
+var i;
+
+
+
+
+</script>
+
+</body>
+</html>

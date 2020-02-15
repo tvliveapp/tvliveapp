@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<body onload="onLoad()">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- head section -->
+<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+ <link rel="stylesheet" href="https://releases.flowplayer.org/7.2.7/skin/skin.css">
+<!-- hls.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.10.1/hls.light.min.js"></script>
+<!-- flowplayer -->
+<script src="https://releases.flowplayer.org/7.2.7/flowplayer.min.js"></script>
+
+<!--script src="/js/player.js"></script-->
+<!--script src="/js/list.js"></script-->
+<style>
+html,body {
+  margin: 0;
+  padding: 0;
+/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* The only rule that matters */
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+/* Chrome, Safari and Opera syntax */
+:-webkit-full-screen {
+  background-color: yellow;
+}
+
+/* Firefox syntax */
+:-moz-full-screen {
+  background-color: yellow;
+}
+
+/* IE/Edge syntax */
+:-ms-fullscreen {
+  background-color: yellow;
+}
+
+/* Standard syntax */
+:fullscreen {
+  background-color: yellow;
+}
+
+/* These just style the content */
+article {
+/*  just a fancy border  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  margin: 10px;
+}
+
+h1 {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-align: center;
+}
+
+h1 span {
+  font-family: sans-serif;
+  letter-spacing: 0;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1 span a {
+  color: #fff;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.overlay a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #818181;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+		font-size: 60px;
+}
+.chIcon{
+	width: 50%;
+	height:10%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	background-color:white;
+}
+.chIcon img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.chNname{
+	font-size: 36px;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-align: center;
+}
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+/*****player*****/
+
+
+</style>
+<!--  Content  -->
+
+<!-- body section -->
+<div class="full-height fixed-controls " id="video-background"></div>
+
+<div>
+
+
+<script>
+	
+newSource='';
+newSource=window.location.search.substr(1).split("|")[1];
+/*
+catch(err) {
+  console.log('no source');
+  newSource='http://194.67.220.30/hls/102.m3u8';
+  
+}
+if (newSource=='') 
+	newSource='http://194.67.220.30/hls/102.m3u8';	
+*/
+newSource=decodeURI(newSource).replace(/\s+/g, '');
+
+
+if (newSource=='undefined'){
+	newSource=localStorage.getItem("lastSource");
+	if (newSource == null)
+		 newSource='http://194.67.220.30/hls/101.m3u8';
+  
+	
+}
+/******/
+function loadjscssfile(filename, filetype){
+    if (filetype=="js"){ //if filename is a external JavaScript file
+        var fileref=document.createElement('script')
+        //fileref.setAttribute("type","text/javascript")
+        fileref.innerHTML=  myTxt.split('lastSource').join(lastSource);
+    }
+    
+	document.getElementsByTagName("body")[0].appendChild(fileref)
+}
+ 
+
+
+
+/***********/
+
+
+function onLoad(){
+	 
+//loadjscssfile("myscript.js", "js") //dynamically load and add 
+	 loadVideo(newSource);
+	 localStorage.setItem("lastSource",newSource);
+	// get the first player
+	//var player = flowplayer();
+	//player.load(lastSource);
+}
+
+/*
+var myTxt="delete player;var player=flowplayer('#video-background', {live: true,autoplay: true,clip: {sources:[{type:'application/x-mpegURL',src:'lastSource'},{type:'application/x-mpegurl',src:'lastSource'},{src:'lastSource'},]}});player.on('error', function(e) {console.log('ini');});";
+*/
+
+
+var player;
+ function loadVideo(vidSrc){
+delete player; player=flowplayer('#video-background', {'control':null, live: true,autoplay: true,clip: {sources:[{type:"application/x-mpegURL",src:newSource},{type:"application/x-mpegurl",src:vidSrc},{src:vidSrc},]}});
+    
+	if ( window.location !== window.parent.location ) {
+		  // The page is in an iframe
+		  player.disable();
+		  
+		} else {
+		  // The page is not in an iframe
+		}
+	
+	player.on('error', function(e) {console.log('error:::');});
+	
+}
+ 
+ /**********/
+// addEventListener support for IE8
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        } 
+
+function doAction(msg){
+	val=msg.split('|');
+	switch(val[0]) {
+		  case 'volUp':
+			// code block
+			 player.volume(val[1]);
+			break;
+		  case '00':
+			// code block
+			break;
+		  default:
+	}
+	
+}
+ bindEvent(window, 'message', function (e) {
+            
+			doAction(e.data);
+			
+        });
+		
+window.window.addEventListener('load',function(){
+	
+	$(document).on('keyup press', function(event) {
+		event.preventDefault();
+		//newKey(event.key);
+		var key = event.keyCode;
+		//sendMessage(key);
+		if (player.isFullscreen) { api.fullscreen();}
+		
+	});
+	$(document).on('keydown', function(event) {
+		event.preventDefault();
+		var key = event.keyCode;
+		//newKey(list(key));
+		//alert(list(key));
+		if ( window.location !== window.parent.location ) {
+		  // The page is in an iframe
+		  if (player.isFullscreen) { api.fullscreen();}
+		  else 
+			sendMessage(key);
+		} else {
+		  // The page is not in an iframe
+		  console.log(event.key);
+		  if (player.isFullscreen) { api.fullscreen();}
+		}
+		
+		
+	});
+});
+
+
+// Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+</script>
+</body>
+</html>
