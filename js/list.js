@@ -11,7 +11,7 @@ function addItem(source,data){
 	var p = document.createElement("p");
 	var img = document.createElement("img");
 	number++;
-	img.src=data[img];
+	img.src=data['img'];
 	img.setAttribute('onerror',"this.src='/media/default.png'");
 	h.innerHTML='['+number+'] '+data.channel_name+' - '+data.country;
 		//h.innerHTML=data.country;
