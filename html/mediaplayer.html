@@ -265,5 +265,14 @@ function closeFullscreen() {
   }
 }	
 </script>
+<script type="application/javascript">
+  var myIP;
+  function getIP(json) {
+   myIP=json.ip;
+  }
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
 </body>
 </html>
