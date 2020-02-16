@@ -3,7 +3,8 @@
 <meta charset="UTF-8">
 <body onload='onLoad()'>
 <script>
-if (location.protocol != 'https:')
+
+if (location.protocol == 'https:')
 {
  location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
 }
