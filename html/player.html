@@ -177,7 +177,7 @@ h1 span a {
 <script>
 	
 newSource='';
-newSource=window.location.search.substr(1).split("|")[1];
+newSource=localStorage.getItem('lastSource');
 /*
 catch(err) {
   console.log('no source');
@@ -187,7 +187,6 @@ catch(err) {
 if (newSource=='') 
 	newSource='http://194.67.220.30/hls/102.m3u8';	
 */
-newSource=decodeURI(newSource).replace(/\s+/g, '');
 
 
 if (newSource=='undefined'){

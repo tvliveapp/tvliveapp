@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type = "text/css" href="../css/modal.css">
 <link rel="stylesheet" type = "text/css" href="../css/video.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<script>
+	
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+if(isChrome){
+	location.href = "/html/mediaPlayer.html";
+}
 
-/**************/
 
 
 
-
-</style>
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script  src="../js/debug.js"></script>
 
@@ -37,22 +41,15 @@
 <div class='content' id='debgLbl'align="top" style="bottom:5%;left:50%; width:15%;color:yellow">
 
 </div>
-<div class='content' id='adds'align="top" style="bottom:5%;left:80%; width:19%;color:yellow">
 
-<!-- ch1 -->
 
-<script>
-  alert('hola');   
-</script>
-</div>
-
+	
 <div onclick='channelDown();'class='content' align="left" style="bottom:50%;left:0%; width:15%;opacity:0.2">
 <<
 </div>
 <div onclick='channelUp();'class='content' align="right" style="bottom:50%;left:95%; width:5%;opacity:0.2">
 >>
 </div>
-
 <div id='chnSrch' class='chnSrch content'>
 <button id='dropdownBtn' class="dropdown-btn" onclick='openNav();'>M 
   
@@ -84,7 +81,7 @@
 
 </div>
 <div id='chnList' class='chnList content'>
- <a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/101.html',this);" id="ch1" class="INT Sports nowlive">1 Channel 1</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/102.html',this);" id="ch2" class="INT Sports nowlive">2 Channel 2</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/103.html',this);" id="ch3" class="INT Sports nowlive">3 Channel 3</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/104.html',this);" id="ch4" class="INT Sports nowlive">4 Channel 4</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/105.html',this);" id="ch5" class="INT Sports nowlive">5 Channel 5</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/106.html',this);" id="ch6" class="INT Sports nowlive">6 Channel 6</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/107.html',this);" id="ch7" class="INT Sports nowlive">7 RTS</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/108.html',this);" id="ch8" class="INT Sports nowlive">8 GAMA 8</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/109.html',this);" id="ch9" class="INT Sports nowlive">9 Channel 9</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/110.html',this);" id="ch10" class="INT Sports nowlive">10 Channel 10</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/111.html',this);" id="ch11" class="INT Sports nowlive">11 Channel 11</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/112.html',this);" id="ch12" class="INT Sports nowlive">12 Channel 12</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/113.html',this);" id="ch13" class="INT Sports nowlive">13 Channel 13</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/114.html',this);" id="ch14" class="INT Sports nowlive">14 Channel 14</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/115.html',this);" id="ch15" class="INT Sports nowlive">15 Channel 15</a><a href="#" onclick="getVideoLink('nowlive','http://nowlive.pro/1/116.html',this);" id="ch16" class="INT Sports nowlive">16 Channel 16</a><a href="#" onclick="getVideoLink('staticChannels','http://173.212.247.99/hls/tvec2.m3u8',this);" id="ch17" class="EC Entertainment staticChannels">17 ECUAVISA</a><a href="#" onclick="getVideoLink('staticChannels','http://latinotvglobal.com:47985/live/Lestviewapp/Lester2001/9715.m3u8',this);" id="ch18" class="EC Sports staticChannels">18 GOL TV 2</a>
+ 
 </div>
 <!-- The Modal -->
 <div id="myModal" class="modal">
