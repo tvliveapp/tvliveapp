@@ -46,7 +46,7 @@ class myHandler(BaseHTTPRequestHandler):
 		sendReply = False
 		data='ercccror'
 		
-		if 1:#try:
+		try:
 		
 			if self.path=="/":  #127.0.0.1:5000/
 				name="html/index.html" #127.0.0.1:5000/index.html
@@ -146,7 +146,7 @@ class myHandler(BaseHTTPRequestHandler):
 			return
 
 		
-		else:#except IOError:
+		except IOError:
 			self.send_error(404,'File Not Found: %s' % self.path)
 
 try:
