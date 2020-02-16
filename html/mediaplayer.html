@@ -2,6 +2,13 @@
 <html>
 <meta charset="UTF-8">
 <body onload='onLoad()'>
+<script>
+if (location.protocol != 'https:')
+{
+ location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
+}
+
+</script>
 <!-- head section -->
 <!-- skin -->
 <link rel="stylesheet" href="https://releases.flowplayer.org/7.2.7/skin/skin.css">
