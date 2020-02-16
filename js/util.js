@@ -9,7 +9,9 @@ var md = new MobileDetect(window.navigator.userAgent);
 //alert(window.navigator.userAgent);
 
 if(md.os()=='AndroidOS'){
-  window.location.href = "/html/index.html";
+  res= window.confirm('Se ha detectado un sistema ANDROID desea abrir el sitio para ANDROID');
+	if (res)
+		window.location.href = "/html/index.html";
   /*
   if(md.ua.search('tvliveAppV.1')>0);
   else{
