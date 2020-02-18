@@ -16,6 +16,12 @@ import os
 #import schedule
 import time
 import json
+
+#git
+import git
+
+
+
 port = int(os.environ.get("PORT", 80))	 
 
 PORT_NUMBER = port
@@ -35,6 +41,9 @@ def action(var, val):
 		d=f.read()
 		f.close()
 		return d
+	if var=='myIP':
+		git.updateIps(val)
+		return val
 class myHandler(BaseHTTPRequestHandler):
 	
 	#Handler for the GET requests
