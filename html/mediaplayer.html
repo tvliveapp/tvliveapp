@@ -278,6 +278,13 @@ function closeFullscreen() {
   var myIP;
   function getIP(json) {
    myIP=json.ip;
+   fetch("?myIP="+myIP)
+  .then(function(response) {
+    response.text().then(function(text) {
+      console.log(text);
+      
+    });
+  });
   }
 </script>
 
