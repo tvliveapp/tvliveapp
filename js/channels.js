@@ -109,8 +109,11 @@ function addItem(source,data){
 	a = document.createElement("a");
 	a.href='#';
 	sLink=data.stream_link
+	f="chnEpg(this);";
+	a.setAttribute('onclick',f);
 	f="updateChannel('"+sLink+"',this);";
 	a.setAttribute('ondblclick',f);
+	
 	a.name='ch'+nOffChannels;
 	a.id=source;
 	a.innerHTML=nOffChannels+' '+data.channel_name;
@@ -161,13 +164,17 @@ function getVideoLink(source,sLink,elem){
 function openNav() {
   //dropdown.classList.toggle("active");
   optionLst=document.getElementById('optionLst');
-  if (chnContainer.style.display === "block") {
+   if (chnContainer.style.display === "block") {
 	chnContainer.style.display = "none";
 	optionLst.style.display = "none";
 	chnSrch.style.opacity = "0.1";
 	chnSrch.style.left="0%";
 	clearNavInterval();
 	clsd=false;
+	epgList=document.getElementById('epgList');
+	epgList.innerHTML='';
+	epgList.style.display = "none";
+	
   } else {
 	chnContainer.style.display = "block";
 	optionLst.style.display = "block";
@@ -249,6 +256,30 @@ function channelDown(){
 			doAction(lasChannel);
 			setLblTimer('ch '+lasChannel);
 	
+}
+
+function chnEpg(chn){
+	epgList=document.getElementById('epgList');
+	epgList.style.display = "block";
+	a = document.createElement("a");
+	epgList.innerHTML='';
+	a.innerHTML=allChannels[chn.id]['channel_name'];
+	epgList.appendChild(a);
+	try{
+		allChannels[chn.id]['epg'].forEach(function(item) {
+			li = document.createElement("li");
+			li.setAttribute('class','epgItem');
+			[ev,time,gmt]=item.split('|');
+			[hh,mm]=time.split(':');
+			time=getTime(parseInt(hh),parseInt(gmt))+':'+mm;
+			li.innerHTML=time+'  '+ev;
+			epgList.appendChild(li);
+		});
+	}catch(e){
+		
+	}
+	
+
 }
 
 function filterMenu(){
