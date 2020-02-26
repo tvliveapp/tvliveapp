@@ -7,12 +7,16 @@ url="https://raw.githubusercontent.com/tvliveapp/channels/master/ips.json"
 g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
 
 ips=[]
+response=requests.get(url)
+if response.text.startswith('404'):
+	ips=[]
+else:
+	ips=ips+response.text.splitlines()
+print(ips)
 def updateIps(ip):
 	global ips, g
-	response=requests.get(url)
 	
-	ips=response.text.splitlines()
-	print(ips)
+	
 	repo = g.get_user().get_repo('channels')
 	file_list = [
 		'ips.json'
