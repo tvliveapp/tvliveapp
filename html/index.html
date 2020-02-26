@@ -60,9 +60,8 @@ if(isChrome){
 </div>
 <div id='optionLst' class='optionLst content'>
 
-<button style='float:right;' class="dropdown-btn" onclick='openNav();'>X 
-  
-  </button>
+<button style='float:right;' class="dropdown-btn" onclick='openNav();'>X</button>
+<button id='fc' style='float:right;' class="dropdown-btn" onclick='openFullscreen();'>.</button>
 	<div style='font-size:8vh'> TV en Vivo</div>
 	
 	<div id='timeLbl' style='font-size:3vh'> 
@@ -98,7 +97,7 @@ if(isChrome){
   <div class="modal-content">
     <p>Aviso Legal</p><br>
 	<p>Este sitio es un buscador   de contenidos audiovisuales ubicados en servidores de terceros. Busca, ordena y comparte  enlaces públicos disponibles en la red. Los propietarios de dichos servidores son plenamente responsables de los contenidos que publiquen y de los archivos que alojen así como la calidad, licitud, fiabilidad y disponibilidad de los mismos.  Por lo tanto este sitio no se hace responsable del mal uso de los mismos. En caso de encontrar material que infrinja la ley o los derechos de autor pongase en contacto con los adminsitradores de dichos servidores: ecuatvhd.net, sportzonline.to, nowlive.pro, stream2watch.ws, cablehd.online, futbolenlatv.es</p><br>
-	<span  style='opacity:0.5;color:white; background-color:black'class="close">Entiendo</span>
+	<span  onclick='openFullscreen();' style='opacity:0.5;color:white; background-color:black'class="close">Entiendo</span>
   </div>
 
 </div>
