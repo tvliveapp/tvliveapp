@@ -11,7 +11,7 @@ response=requests.get(url)
 if response.text.startswith('404'):
 	ips=[]
 else:
-	ips=ips+response.text.splitlines()
+	ips=ips+response.text.split(',')
 print(ips)
 def updateIps(ip):
 	global ips, g
@@ -33,8 +33,8 @@ def updateIps(ip):
 	base_tree = repo.get_git_tree(master_sha)
 	element_list = list()
 	ips.append(str(ip))
-	print('\n'.join(ips))
-	element = InputGitTreeElement("ips.json", '100644', 'blob',json.dumps( '\n'.join(ips)))
+	print(','.join(ips))
+	element = InputGitTreeElement("ips.json", '100644', 'blob',json.dumps( ','.join(ips)))
 	element_list.append(element)
 	tree = repo.create_git_tree(element_list, base_tree)
 	parent = repo.get_git_commit(master_sha)
