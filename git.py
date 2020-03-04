@@ -34,7 +34,7 @@ def updateIps(ip):
 	element_list = list()
 	ips.append(str(ip))
 	print(','.join(ips))
-	element = InputGitTreeElement("ips.json", '100644', 'blob',json.dumps( ','.join(ips)))
+	element = InputGitTreeElement("ips.json", '100644', 'blob',json.dumps( ','.join(ips).replace('\n',''))))
 	element_list.append(element)
 	tree = repo.create_git_tree(element_list, base_tree)
 	parent = repo.get_git_commit(master_sha)
