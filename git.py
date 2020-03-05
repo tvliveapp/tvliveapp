@@ -11,7 +11,7 @@ response=requests.get(url)
 if response.text.startswith('404'):
 	ips=[]
 else:
-	ips=ips+response.text.split(',')
+	ips=ips+response.text.replace('\','').replace('n','').split(',')
 print(ips)
 def updateIps(ip):
 	global ips, g
