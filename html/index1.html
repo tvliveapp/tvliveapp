@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-<body onload='onLoad()'>
-<link rel="stylesheet" href="https://releases.flowplayer.org/7.2.7/skin/skin.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!doctype html>
+<html>
+    <head>
+	<script data-ad-client="ca-pub-7126179415054673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>	
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fullscreen Video</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+		<script data-ad-client="ca-pub-7126179415054673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body>
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- canal2 -->
 <ins class="adsbygoogle"
@@ -17,310 +23,56 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<!-- head section -->
+    <div class="fullscreen-bg">
+        <video loop  autoplay poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" class="fullscreen-bg__video">
+            <source src="http://iptvpro.premium-itv.com:8789/wLgupJh9UP/mEiFLXNZRx/23615" >
+            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm">
+            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg">
+        </video>
+    </div>
 
+    <div class="content">
+        <h1 onclick='openFullscreen();'>Full screen HTML5 video background </h1>
+       
+    </div>
 
-<!-- hls.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.10.1/hls.light.min.js"></script>
-<!-- flowplayer -->
-<script src="https://releases.flowplayer.org/7.2.7/flowplayer.min.js"></script>
-<script src="/js/util.js"></script>
-<script src="/js/list.js"></script>
-<script src="/js/idle.js"></script>
+	<script>
+/* Get the documentElement (<html>) to display the page in fullscreen */
+var elem = document.documentElement;
 
-<script src="/js/rmtControl.js"></script>
-
-<script src="/js/keyCodes.js"></script>
-<style>
-html,body {
-  margin: 0;
-  padding: 0;
-/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-  background: #333;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-/* The only rule that matters */
-#video-backgroun {
-/*  making the video fullscreen  */
-  position: fixed;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
- // pointer-events: none;
-}
-/* Chrome, Safari and Opera syntax */
-:-webkit-full-screen {
-  background-color: yellow;
-}
-
-/* Firefox syntax */
-:-moz-full-screen {
-  background-color: yellow;
-}
-
-/* IE/Edge syntax */
-:-ms-fullscreen {
-  background-color: yellow;
-}
-
-/* Standard syntax */
-:fullscreen {
-  background-color: yellow;
-}
-
-/* These just style the content */
-article {
-/*  just a fancy border  */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 10px solid rgba(255, 255, 255, 0.5);
-  margin: 10px;
-}
-
-h1 {
-  position: absolute;
-  top: 60%;
-  width: 100%;
-  font-size: 36px;
-  letter-spacing: 3px;
-  color: #fff;
-  font-family: Oswald, sans-serif;
-  text-align: center;
-}
-
-h1 span {
-  font-family: sans-serif;
-  letter-spacing: 0;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-h1 span a {
-  color: #fff;
-}
-
-.overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 5%;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-	
-}
-/*
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
-}
-*/
-.overlay-content {
-    position: relative;
-    //top: 10%;
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.overlay a {
-    //padding: 10px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #818181;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-		font-size: 60px;
-}
-.chIcon{
-	width: 50%;
-	height:10%;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 5px;
-	background-color:white;
-}
-.chIcon img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-.imgIcon{
-	{
-
-	background: url("http://www.rapifutbol.tv/javax.faces.resource/dynamiccontent.properties.jsf?ln=primefaces&pfdrid=H6AojLbKHXAw5VxJc9SUY69uDesOzTvP&pfdrt=sc&id=726&pfdrid_c=true") no-repeat;
-    
-    width: 100px;
-    height: 100px;
-    
-    
-    background-size:contain;
-}
-}
-.chNname{
-	font-size: 36px;
-  letter-spacing: 3px;
-  color: #fff;
-  font-family: Oswald, sans-serif;
-  text-align: center;
-  width:100%;
-  
-}
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
   }
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
 }
 
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+  }
 }
 
-.top-left {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}
 
-.top-right {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-}
-
-.bottom-right {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#clsNav{
-font-size:50px;
-cursor:pointer;
-position: relative;
-}
-
-#show {
-	width:0%;
-	visibility :hidden;
-	visibility :hidden; 
-	font-size:10px;
-	cursor:pointer;
-	
-	
-}
-#mySearch{
-	//position: absolute;
-  left: 150px;
-  background: red;
-  background-color: red;
-}
-.overlay input{
- background: red;
-  background-color: red;
-}
-iframe {
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
-</style>
-<!--  Content  -->
-
-<div id='show'> 
-<span style="width = '2%';font-size:18px;cursor:pointer" onclick="openNav()">&#9776; </span>
-<div id='numberLbl'align="center" style="top:10;left:10%; width:10%;float:right;color:yellow">
-
-</div>
-</div>
-
-<!-- body section -->
-<div id='iframeCnt'>
-
-
-<iframe  src="/html/player.html" class="full-height" onkeydown="alert('leo');" id="video-backgroun"></iframe>
-
-
-<div>
-
-<div onscroll="myMove(event)"onclick="myMove(event)" onkeypress="myMove(event)" onmousemove="myMove(event)"  id="myNav" class="overlay container">
-  
-
-  <div id='dynamic-list'class="overlay-content ">
-
-
-  <div id='dynamic-list'class="overlay-content" style="list-style-type:none">
- <span style="width = '50%';font-size:18px;cursor:pointer" onclick="openNav()">&#9776; </span>
-
-</div>
-
- 
-<script>
-	// JavaScript code
-/*
-        flowplayer('#video-background', {
-           live: true,  // set if it's a live stream          
-            autoplay: true,
-			//ratio: 9/16, // set the aspect ratio of the stream
-            clip: {
-                sources: [
-                    // path to the HLS m3u8
-					
-                    { type: "application/x-mpegurl", src: "http://stream.tvtap.live:8081/live/it-20-mediaset.stream/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9Ny85LzIwMTkgMTo0Nzo1NSBBTSZoYXNoX3ZhbHVlPWd1ZnYvcEp4NDl4VUN0NHhTMHhzSGc9PSZ2YWxpZG1pbnV0ZXM9MjA="},
-                    // path to an optional MP4 fallback
-                    { type: "application/x-mpegURL", src: "http://stream.tvtap.live:8081/live/it-20-mediaset.stream/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9Ny85LzIwMTkgMTI6NTc6MTQgQU0maGFzaF92YWx1ZT13VE5VckE2Y1F0Q1BKblRuTnUzd0pBPT0mdmFsaWRtaW51dGVzPTIw"}
-                ]
-            }
-        });
-	
-	*/
-	//http://radioitaliatv-lh.akamaihd.net/i/radioitaliatv_1@329645/index_720x480_av-p.m3u8
-	var streamAddress = 'http://radioitaliatv-lh.akamaihd.net/i/radioitaliatv_1@329645/index_720x480_av-p.m3u8';
-	// or DOM object
-
+window.onbeforeunload = function () {
+    alert( "Do you really want to close?");
+};
 </script>
+
+
+	
+    </body>
+</html>
