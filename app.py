@@ -105,7 +105,7 @@ class myHandler(BaseHTTPRequestHandler):
 			if name.endswith(".apk"):
 				mimetype='text/html'
 				sendReply = True
-				f = open('media' + self.path,'rb')
+				f = open(name,'rb')
 				data=f.read()
 				
 				#print(data) 
