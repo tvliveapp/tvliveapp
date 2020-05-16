@@ -18,7 +18,7 @@ iframe {
 
 <iframe id="frame" width="560" height="315"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe id="frame2" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style='display:none' id="frame2" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <script>
  function getRndInteger(min, max) {
@@ -31,7 +31,7 @@ code="VG9nwzrs1ro";
 code=document.location.href.split("#")[1]
 src="https://www.youtube.com/embed/"+code
 document.getElementById("frame").src=src;
-alert(code);
+
 
 src="https://www.youtube.com/embed/"+vid[ getRndInteger(0,6)]+opt
  document.getElementById("frame2").src=src;   
