@@ -31,7 +31,19 @@ if(isChrome){
 
 </head>
 <body onload='onLoad()'>
-<iframe style='display:none' width="560" height="315" src="https://www.youtube.com/embed/0nVPzbBXLkA?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style='display:none' id="frame2" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<script>
+ function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+ vid=["VG9nwzrs1ro","cto8jE2vYWA","1B7cxEBXD7c","39f-fE711aQ","4GmmIY4LFvI","RY5Sxwx4MPk","76wiO171OMQ"];
+//style='display:none'
+opt="?autoplay=1&mute=1";
+src="https://www.youtube.com/embed/"+vid[ getRndInteger(0,6)]+opt
+ document.getElementById("frame2").src=src;   
+   
+</script>
 <div id='playerCtn'>
 <video autoplay muted loop id="player">
   
