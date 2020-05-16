@@ -18,16 +18,24 @@ iframe {
 
 <iframe id="frame" width="560" height="315"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe  src="https://www.youtube.com/embed/VG9nwzrs1ro" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="frame2" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <script>
+ function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+ vid=["VG9nwzrs1ro","cto8jE2vYWA","1B7cxEBXD7c","39f-fE711aQ","4GmmIY4LFvI","RY5Sxwx4MPk","76wiO171OMQ"];
 //style='display:none'
 opt="?autoplay=1&mute=1";
 code="VG9nwzrs1ro";
 code=document.location.href.split("#")[1]
-src="https://www.youtube.com/embed/"+code+opt
-document.getElementById("frame").src="https://www.youtube.com/embed/cto8jE2vYWA"+opt;
+src="https://www.youtube.com/embed/"+code
+document.getElementById("frame").src=src;
 alert(code);
+
+src="https://www.youtube.com/embed/"+vid[ getRndInteger(0,6)]+opt
+ document.getElementById("frame2").src=src;   
+   
 </script>
 </body>
 </html>
