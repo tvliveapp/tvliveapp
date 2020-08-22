@@ -28,16 +28,20 @@ iframe {
 //style='display:none'
 opt="?autoplay=1&mute=1";
 code="VG9nwzrs1ro";
-code=document.location.href.split("#")[1]
-if(code.search("view")>=0 ) //https://obs.ninja/?view=JrAmeTr
- src= "https://obs.ninja/?"+code;
-else 
-   src="https://www.youtube.com/embed/"+code
-document.getElementById("frame").src=src;
+try {
+    code=document.location.href.split("#")[1]
+    if(code.search("view")>=0 ) //https://obs.ninja/?view=JrAmeTr
+     src= "https://obs.ninja/?"+code;
+    else 
+       src="https://www.youtube.com/embed/"+code
+    document.getElementById("frame").src=src;
 
+}
+catch(err) {
+}
 
 src="https://www.youtube.com/embed/"+vid[ getRndInteger(0,6)]+opt
- document.getElementById("frame2").src=src;   
+document.getElementById("frame2").src=src;   
    
 </script>
 </body>
