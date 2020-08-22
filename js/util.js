@@ -7,11 +7,13 @@ var lasChannel;
 var md = new MobileDetect(window.navigator.userAgent);
 
 //alert(window.navigator.userAgent);
-
+hash="";
+if(hash!=window.location.hash)
+	hash="/"+window.location.hash;
 if(md.os()=='AndroidOS'){
   res= window.confirm('Se ha detectado un sistema ANDROID desea abrir el sitio para ANDROID');
 	if (res)
-		window.location.href = "/html/index.html/"+window.location.hash;
+		window.location.href = "/html/index.html"+hash;
   /*
   if(md.ua.search('tvliveAppV.1')>0);
   else{
@@ -23,7 +25,7 @@ if(md.os()=='AndroidOS'){
 }else if(window.navigator.userAgent.toUpperCase().search('TV')>-1){
 	res= window.confirm('Se ha detectado un TV Smart desea abrir el sitio para TV');
 	if (res)
-			window.location.href = "/html/index.html/"+window.location.hash;
+			window.location.href = "/html/index.html"+hash;
 }
 	
 	
