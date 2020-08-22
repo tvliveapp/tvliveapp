@@ -9,7 +9,7 @@ var md = new MobileDetect(window.navigator.userAgent);
 //alert(window.navigator.userAgent);
 hash="";
 if(hash!=window.location.hash)
-	hash="/"+window.location.hash;
+	hash=window.location.hash;
 if(md.os()=='AndroidOS'){
   res= window.confirm('Se ha detectado un sistema ANDROID desea abrir el sitio para ANDROID');
 	if (res)
