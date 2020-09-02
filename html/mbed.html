@@ -32,7 +32,8 @@ try {
     code=document.location.href.split("#")[1]
     if(code.search("view")>=0 ) //https://obs.ninja/?view=JrAmeTr
      src= code;
-    else 
+    else if(code.search("if")>=0)
+       src=code.split("=")[1];
        src="https://www.youtube.com/embed/"+code
     document.getElementById("frame").src=src;
 
