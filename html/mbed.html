@@ -34,6 +34,7 @@ try {
      src= code;
     else if(code.search("if")>=0)
        src=code.split("=")[1];
+     else
        src="https://www.youtube.com/embed/"+code
     document.getElementById("frame").src=src;
 
