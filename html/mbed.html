@@ -31,7 +31,7 @@ code="VG9nwzrs1ro";
 try {
     code=document.location.href.split("#")[1]
     if(code.search("view")>=0 ) //https://obs.ninja/?view=JrAmeTr
-     src= "https://obs.ninja/?"+code;
+     src= code;
     else 
        src="https://www.youtube.com/embed/"+code
     document.getElementById("frame").src=src;
