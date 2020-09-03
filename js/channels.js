@@ -259,6 +259,7 @@ function channelDown(){
 }
 
 function chnEpg(chn){
+	/*
 	epgList=document.getElementById('epgList');
 	epgList.style.display = "block";
 	a = document.createElement("a");
@@ -278,7 +279,7 @@ function chnEpg(chn){
 	}catch(e){
 		
 	}
-	
+	*/
 
 }
 
