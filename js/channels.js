@@ -259,9 +259,10 @@ function channelDown(){
 }
 
 function chnEpg(chn){
-	/*
+	
 	epgList=document.getElementById('epgList');
 	epgList.style.display = "block";
+	/*
 	a = document.createElement("a");
 	epgList.innerHTML='';
 	a.innerHTML=allChannels[chn.id]['channel_name'];
