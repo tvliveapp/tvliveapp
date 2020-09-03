@@ -50,7 +50,7 @@ l.epgItem{
 .epgList{
 	height:50%;
 	background: rgba(0, 0, 0, 0.8);
-	top:75%;
+	top:50%;
 	width: 100%;
 	left:45%;
 	overflow-y:auto;
