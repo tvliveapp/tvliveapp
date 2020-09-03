@@ -188,6 +188,7 @@ function openNav() {
 
 
 function updateChannel(chnUrl){
+	console.log("update channel");
 	vidSrc=chnUrl.replace('/?player|','');
 	saveData();
 	loadChannel(vidSrc);
