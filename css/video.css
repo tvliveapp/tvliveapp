@@ -48,10 +48,10 @@ l.epgItem{
    left:10%;
 }
 .epgList{
-	height:20%;
+	height:50%;
 	background: rgba(0, 0, 0, 0.8);
 	top:75%;
-	width: 55%;
+	width: 100%;
 	left:45%;
 	overflow-y:auto;
 	 display:"none"
