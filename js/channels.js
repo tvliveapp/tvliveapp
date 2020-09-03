@@ -178,6 +178,7 @@ function openNav() {
   } else {
 	chnContainer.style.display = "block";
 	optionLst.style.display = "block";
+	   chnEpg("");
 	//chnSrch.style.opacity = "1";
 	//chnSrch.style.left="42%";
 	navInterval();
