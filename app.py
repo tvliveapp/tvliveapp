@@ -58,6 +58,7 @@ class myHandler(BaseHTTPRequestHandler):
 		try:
 		
 			if self.path=="/":  #127.0.0.1:5000/
+				wiz1Epg.updateWizEpg()
 				name="html/mediaplayer.html" #127.0.0.1:5000/index.html
 			else:
 				name=self.path.replace("/",'',1)
