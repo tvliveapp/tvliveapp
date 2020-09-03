@@ -286,3 +286,7 @@ function filterMenu(){
 	
 
 }
+
+window.ifrFcn = function (item) {
+   alert("I was called from a child iframe: "+item);
+}
