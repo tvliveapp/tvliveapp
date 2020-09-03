@@ -290,5 +290,6 @@ function filterMenu(){
 }
 
 window.ifrFcn = function (item) {
-   alert("I was called from a child iframe: "+item);
+   console.log("I was called from a child iframe: "+item);
+   document.getElementById(item).ondblclick.call;
 }
