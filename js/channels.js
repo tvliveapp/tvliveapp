@@ -172,7 +172,7 @@ function openNav() {
 	clearNavInterval();
 	clsd=false;
 	epgList=document.getElementById('epgList');
-	epgList.innerHTML='';
+	//epgList.innerHTML='';
 	epgList.style.display = "none";
 	
   } else {
