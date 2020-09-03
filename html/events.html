@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title><style>
+body	{
+	margin:0px;
+	font-family:Tahoma, Geneva, sans-serif;
+	text-shadow:#FFF 1px 1px;
+	background:white;
+}
+.events	{
+	background:#F9F9F9;
+	padding:10px;
+	margin:5px;
+	border:1px solid #CCC;
+
+}	
+.list {
+	font-size: 14px;
+	}
+a {
+color: #D11C00;
+}
+
+a:hover {
+color: #6E1304;
+}
+</style>
+<div class="events"><br/> <br/><h4>All times CET (GMT 2+)</h4> <h4>07/04/2020</h4> <br/><div class="list"> <hr/>13:05 <font color="#5185C9"><b>Sportscenter</b></font> ESPN <a href="#" id="wiziwig3" onclick="myFnc(this)" target="_top">Channel 3</a><br> <hr/>15:10 <font color="#5185C9"><b>Cycling</b></font> Tour de France: Stage 6 <a href="#" id="wiziwig66" onclick="myFnc(this)" target="_top">Channel 66</a><br> <br/> <div>
+</div></br></br></div></div>
+<script>
+function myFnc(item){
+	console.log(item.id);
+	window.parent.ifrFcn(item.id); 
+}
+</script>
+</body>
+</html>
