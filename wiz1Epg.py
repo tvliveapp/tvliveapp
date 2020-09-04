@@ -61,7 +61,7 @@ function myMove(){
 
 document.setAttribute('onscroll','myMove()');
 	document.setAttribute('onclick','myMove()');
-	document.addEventListener('keypress', myMove);
+	document.addEventListener('keypress', 'myMove');
 	document.setAttribute('onmousemove','myMove()');
 </script>
 '''
