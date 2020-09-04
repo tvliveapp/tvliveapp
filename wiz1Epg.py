@@ -59,6 +59,7 @@ function myMove(){
 	}
 	 
 }
+window.onscroll = function() {myMove()};
 </script>
 '''
 def updateWizEpg():
