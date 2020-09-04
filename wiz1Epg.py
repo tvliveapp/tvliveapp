@@ -52,16 +52,13 @@ function myFnc(item){
 	console.log(item.id);
 	window.parent.ifrFcn(item.id); 
 }
+
 function myMove(){
 	console.log("moving");
 	if ( window.location !== window.parent.location ) {	window.parent.ifMove();  	} else {	  // The page is not in an iframe	
 	}
 	 
 }
-
-document.getElementsByClassName("list").onmousemove='myMove()';
-
-
 </script>
 '''
 def updateWizEpg():
@@ -78,7 +75,14 @@ def updateWizEpg():
 	
 		print(a.contents[-1]+":"+a.find_previous_sibling('font').text+":" +a.previousSibling)
 		print(a.find_previous_sibling('font').previousSibling)
+	
 	'''
+	
+	mydivs = soup.findAll("div", {"class": "events"})
+	mydivs[-1]["onmouseover"]="myMove()"
+	mydivs[-1]["onmousemove"]="myMove()"
+	mydivs[-1]["onscroll	"]="myMove()"
+	
 	for a in soup.findAll('a'):
 		#print(a.contents[-1].split()[1])
 		a['href'] = "#"
