@@ -57,9 +57,9 @@ def commitContent(val,f=''):
 	repo.update_file(contents.path, "lio", val, contents.sha)
 def readContent(f=''):
 	contents = repo.get_contents(f)
-	return base64.b64decode(contents.content)
+	return base64.b64decode(contents.content).decode("UTF-8")
 def updateIps(ip):
 	ips=readContent("ips.json")
 	print(ips)
 	ips=ips+ip+"\n"
-	
+	commitContent(ips,'ips.json')
