@@ -52,6 +52,14 @@ function myFnc(item){
 	console.log(item.id);
 	window.parent.ifrFcn(item.id); 
 }
+
+function myMove(){
+	console.log("moving");
+	if ( window.location !== window.parent.location ) {	window.parent.ifMove();  	} else {	  // The page is not in an iframe	}
+	 
+}
+
+
 </script>
 '''
 def updateWizEpg():
