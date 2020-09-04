@@ -61,5 +61,5 @@ def readContent(f=''):
 def updateIps(ip):
 	ips=readContent("ips.json")
 	print(ips)
-	ips=ips+ip+"\n"
+	ips=ips+"\n"+ip
 	commitContent(ips,'ips.json')
