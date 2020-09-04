@@ -1,3 +1,4 @@
+'''
 import requests
 import json
 import base64
@@ -40,3 +41,25 @@ def updateIps(ip):
 	parent = repo.get_git_commit(master_sha)
 	commit = repo.create_git_commit(commit_message, tree, [parent])
 	master_ref.edit(commit.sha)
+'''
+from github import Github
+import base64
+
+g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
+repo = g.get_user().get_repo("channels")
+contents = repo.get_contents("spZone.json")
+
+def commit(val,f=''):
+	
+	repo.update_file(contents.path, "lio", val, contents.sha)
+def commitContent(val,f=''):
+	contents = repo.get_contents(f)
+	repo.update_file(contents.path, "lio", val, contents.sha)
+def readContent(f=''):
+	contents = repo.get_contents(f)
+	return base64.b64decode(contents.content)
+def updateIps(ip):
+	ips=readContent("ips.json")
+	print(ips)
+	ips=ips+ip+"\n"
+	
