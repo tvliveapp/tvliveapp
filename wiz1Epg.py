@@ -81,8 +81,8 @@ def updateWizEpg():
 	mydivs = soup.findAll("div", {"class": "events"})
 	mydivs[-1]["onmouseover"]="myMove()"
 	mydivs[-1]["onmousemove"]="myMove()"
-	mydivs[-1]["onscroll	"]="myMove()"
-	
+	mydivs[-1]["onscroll"]="myMove()"
+	mydivs[-1]["onclick"]="myMove()"
 	for a in soup.findAll('a'):
 		#print(a.contents[-1].split()[1])
 		a['href'] = "#"
