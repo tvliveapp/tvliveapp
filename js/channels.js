@@ -295,3 +295,7 @@ window.ifrFcn = function (item) {
    console.log("I was called from a child iframe: "+item);
    document.getElementById(item).ondblclick();
 }
+window.ifMove = function ) {
+   console.log("I was called from a child iframe: move");
+   myMove();
+}
