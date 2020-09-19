@@ -30,6 +30,10 @@ PORT_NUMBER = port
 #This class will handles any incoming request from
 #the browser 
 channelList=[]
+def getStream(id):
+	if id.find("dailysport")>=0:
+		dailysportEpg.getStreamLink(id.replace("dailysport",""))
+
 def action(var, val):
 	if var=='channelList':
 		return  channelList
@@ -45,6 +49,10 @@ def action(var, val):
 	if var=='myIP':
 		git.updateIps(val)
 		return val
+	if var=='getStream':
+		return getStream(val)
+	else:
+		return "ok"
 class myHandler(BaseHTTPRequestHandler):
 	
 	#Handler for the GET requests
