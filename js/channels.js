@@ -299,3 +299,7 @@ window.ifMove = function () {
    console.log("I was called from a child iframe: move");
    myMove();
 }
+window.ifrFcn1 = function (src) {
+   console.log("I was called from a child iframe: "+src);
+   updateChannel(src);
+}
