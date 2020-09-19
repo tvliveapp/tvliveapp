@@ -32,7 +32,7 @@ PORT_NUMBER = port
 channelList=[]
 def getStream(id):
 	if id.find("dailysport")>=0:
-		dailysportEpg.getStreamLink(id.replace("dailysport",""))
+		return dailysportEpg.getStreamLink(id.replace("dailysport",""))
 
 def action(var, val):
 	if var=='channelList':
