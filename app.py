@@ -20,6 +20,7 @@ import json
 #git
 import git
 import wiz1Epg
+import dailysportEpg
 
 
 port = int(os.environ.get("PORT", 80))	 
