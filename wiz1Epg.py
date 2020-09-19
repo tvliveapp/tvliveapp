@@ -52,7 +52,12 @@ function myFnc(item){
 	console.log(item.id);
 	window.parent.ifrFcn(item.id); 
 }
-
+function myFnc1(item){
+	console.log(item.name);
+	a=item.nextElementSibling;
+	a.click();
+	
+}
 function myMove(){
 	console.log("moving");
 	if ( window.location !== window.parent.location ) {	window.parent.ifMove();  	} else {	  // The page is not in an iframe	
@@ -90,6 +95,7 @@ def updateWizEpg():
 		a['id'] = "wiziwig"+a.contents[-1].split()[-1]
 		a.contents[-1].replaceWith(a['id'])
 		a['onclick'] ="myFnc(this);return false;"
+		a.find_previous_sibling('font')['onclick'] ="myFnc1(this);"
 
 	f=open("events.html",'w')
 	f.write("<!DOCTYPE html>\n<html>\n<head>\n<title>Page Title</title>"+str(soup)+js+"</body>\n</html>")
