@@ -6,7 +6,7 @@ function init(nChan){
 	
 }
 function loadChannel(chnUrl){
-	
+	/*
 	video=document.createElement('video');
 	//video.src=vidSrc;
 	video.autoplay=true;
@@ -27,6 +27,33 @@ function loadChannel(chnUrl){
 	video.appendChild(sourceF);
 	vidPlayer.appendChild(video);
 	video.play();
+	*/
+	data=chnUrl.split("|");
+    if (data[1]==undefined){
+		if(Hls.isSupported()) {
+			var video = document.getElementById('player');
+			var hls = new Hls();
+			hls.loadSource(data[0]);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			  video.play();
+		  });
+		}
+	}else{
+		const protData = {
+            "com.widevine.alpha": {
+                "serverURL": data[1]
+            }
+        };
+        var video,
+            player,
+            url = data[10]
+        video = document.getElementById('player');
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+		player.play();
+	}
 
 }
 function playerVolDown(){
