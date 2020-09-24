@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-try:
+try: 
 	from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 except:
 	from http.server import BaseHTTPRequestHandler,HTTPServer
