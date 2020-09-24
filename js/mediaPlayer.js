@@ -47,7 +47,7 @@ function loadChannel(chnUrl){
         };
         var video,
             player,
-            url = data[10]
+            url = data[0]
         video = document.getElementById('player');
         player = dashjs.MediaPlayer().create();
         player.initialize(video, url, true);
