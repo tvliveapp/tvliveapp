@@ -54,7 +54,7 @@ function loadChannel(chnUrl){
         player.setProtectionData(protData);
 		player.play();
 	}
-	if(window.location.protocol!=chnUrl.split("://")[0])
+	if(window.location.protocol!=chnUrl.split("://")[0]+":")
 		window.location.protocol=chnUrl.split("://")[0];
 
 }
