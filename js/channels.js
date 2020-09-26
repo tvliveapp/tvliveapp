@@ -191,7 +191,7 @@ function openNav() {
 function updateChannel(chnUrl,ele){
 	console.log("update channel");
 	vidSrc=chnUrl.replace('/?player|','');
-	lasChannel=ele.id.replace("ch","");
+	lasChannel=ele.name.replace("ch","");
 	saveData();
 	loadChannel(vidSrc);
 }
