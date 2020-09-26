@@ -2,8 +2,7 @@ const vidPoster='https://media0.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif';
 var lastVol=0.5;
 var nChannels;
 function init(nChan){
-	nChannels=nChan;
-	
+	nChannels=nChan;	
 }
 function loadChannel(chnUrl){
 	/*
@@ -31,6 +30,19 @@ function loadChannel(chnUrl){
 	url=chnUrl.split("|")[0];
 	widevineURL="";
 	var src={file:url};
+	var player = new Clappr.Player({
+        source: url,
+        parentId: "#videoPlayer",
+        mediacontrol: {seekbar: "#00FFFB", buttons: "#00FFFB"},
+        preload: "auto",
+        autoPlay: "true",
+        width: "100%",
+        height: "100%",
+        strings: {
+        "en": {
+        'live': 'LIVE - MEGA TELEVISIÓN HD'},
+        },
+        });/*
 	if(chnUrl.split("|")[1]!=undefined){
 		widevineURL=chnUrl.split("|")[1];
 	    src={
@@ -61,21 +73,9 @@ function loadChannel(chnUrl){
        background: ""
     }
        }
-       );
+       );*/
 	}else{
-		var player = new Clappr.Player({
-        source: url,
-        parentId: "#videoPlayer",
-        mediacontrol: {seekbar: "#00FFFB", buttons: "#00FFFB"},
-        preload: "auto",
-        autoPlay: "true",
-        width: "100%",
-        height: "100%",
-        strings: {
-        "en": {
-        'live': 'LIVE - MEGA TELEVISIÓN HD'},
-        },
-        });
+		
 	
 	
 	}
