@@ -2,7 +2,8 @@ const vidPoster='https://media0.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif';
 var lastVol=0.5;
 var nChannels;
 function init(nChan){
-	nChannels=nChan;	
+	nChannels=nChan;
+	
 }
 function loadChannel(chnUrl){
 	/*
@@ -27,42 +28,36 @@ function loadChannel(chnUrl){
 	vidPlayer.appendChild(video);
 	video.play();
 	*/
-	url=chnUrl.split("|")[0];
-	widevineURL="";
-	var src={file:url};
-	
-	if(chnUrl.split("|")[1]!=undefined){
-		widevineURL=chnUrl.split("|")[1];
-	    src={
-                    "default": false,
-					"file":url,
-					"drm": {
-                       "widevine": {
-                            "url": widevineURL
-                       }
-                   }
-                   , "label": "0", "type": "mpd"
-               };
-	var playerInstance=jwplayer("videoPlayer"); 
-        playerInstance.setup( {
-            playlist: [ {
-            title : "TVLIVEAPP",
-             description: "FREE TV",
-             image: "https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif",
-                "sources": [src]
-           }
-           ], enableFullscreen: false,width: "100%",  height: "100%", aspectratio: "16:9", controlbar:false,autostart: true, abouttext: "TVLIVEAPP",	 	 
-             aboutlink: "TVLIVEAPP", cast: {}
-           ,
-          skin: {
-       name: "bekle",
-       active: "orange",
-       inactive: "pink",
-       background: ""
-    }
-       }
-       );
+	data=chnUrl.split("|");
+    if (data[1]==undefined){
+		if(Hls.isSupported()) {
+			var video = document.getElementById('player');
+			var hls = new Hls();
+			hls.loadSource(data[0]);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			  video.play();
+		  });
+		}
+	}else{
+		const protData = {
+            "com.widevine.alpha": {
+                "serverURL": data[1]
+            }
+        };
+        var video,
+            player,
+            url = data[0]
+        video = document.getElementById('player');
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+		player.play();
 	}
+	if(window.location.protocol!=chnUrl.split("://")[0]+":")
+		window.location.protocol=chnUrl.split("://")[0];
+
+}
 function playerVolDown(){
 	console.log('volDonw');
 	vidPlayer.getElementsByTagName('video')[0].volume=0;
