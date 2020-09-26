@@ -55,7 +55,7 @@ function loadChannel(chnUrl){
 		player.play();
 	}
 	if(window.location.protocol!=chnUrl.split("://")[0]+":")
-		window.location.protocol=chnUrl.split("://")[0];
+		window.location.protocol=chnUrl.split("://")[0]+":";
 
 }
 function playerVolDown(){
