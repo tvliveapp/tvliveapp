@@ -149,8 +149,8 @@ function onLoad(){
 	chnCnt=document.getElementById('chnList');
 	player=document.getElementById('playerCtn');
 	loadChannels(chnCnt,player,label);
-	openNav();
-    openNav();
+	//openNav();
+    //openNav();
 	
 	
 	
