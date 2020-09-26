@@ -65,7 +65,7 @@ function loadChannel(chnUrl){
 	}else{
 		var player = new Clappr.Player({
         source: url,
-        parentId: "#mediaPlayer",
+        parentId: "#videoPlayer",
         mediacontrol: {seekbar: "#00FFFB", buttons: "#00FFFB"},
         preload: "auto",
         autoPlay: "true",
