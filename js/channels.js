@@ -188,9 +188,10 @@ function openNav() {
 } 
 
 
-function updateChannel(chnUrl){
+function updateChannel(chnUrl,ele){
 	console.log("update channel");
 	vidSrc=chnUrl.replace('/?player|','');
+	lasChannel=ele.id.replace("ch","");
 	saveData();
 	loadChannel(vidSrc);
 }
