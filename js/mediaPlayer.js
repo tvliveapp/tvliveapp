@@ -30,19 +30,7 @@ function loadChannel(chnUrl){
 	url=chnUrl.split("|")[0];
 	widevineURL="";
 	var src={file:url};
-	var player = new Clappr.Player({
-        source: url,
-        parentId: "#videoPlayer",
-        mediacontrol: {seekbar: "#00FFFB", buttons: "#00FFFB"},
-        preload: "auto",
-        autoPlay: "true",
-        width: "100%",
-        height: "100%",
-        strings: {
-        "en": {
-        'live': 'LIVE - MEGA TELEVISIÓN HD'},
-        },
-        });/*
+	
 	if(chnUrl.split("|")[1]!=undefined){
 		widevineURL=chnUrl.split("|")[1];
 	    src={
@@ -55,7 +43,7 @@ function loadChannel(chnUrl){
                    }
                    , "label": "0", "type": "mpd"
                };
-		var playerInstance=jwplayer("videoPlayer"); 
+	var playerInstance=jwplayer("videoPlayer"); 
         playerInstance.setup( {
             playlist: [ {
             title : "TVLIVEAPP",
@@ -73,15 +61,7 @@ function loadChannel(chnUrl){
        background: ""
     }
        }
-       );*/
-	}else{
-		
-	
-	
-	}
-	
-
-}
+       );
 function playerVolDown(){
 	console.log('volDonw');
 	vidPlayer.getElementsByTagName('video')[0].volume=0;
