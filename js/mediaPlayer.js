@@ -43,8 +43,7 @@ function loadChannel(chnUrl){
                    }
                    , "label": "0", "type": "mpd"
                };
-	}
-	var playerInstance=jwplayer("videoPlayer"); 
+		var playerInstance=jwplayer("videoPlayer"); 
         playerInstance.setup( {
             playlist: [ {
             title : "TVLIVEAPP",
@@ -63,6 +62,24 @@ function loadChannel(chnUrl){
     }
        }
        );
+	}else{
+		var player = new Clappr.Player({
+        source: url,
+        parentId: "#mediaPlayer",
+        mediacontrol: {seekbar: "#00FFFB", buttons: "#00FFFB"},
+        preload: "auto",
+        autoPlay: "true",
+        width: "100%",
+        height: "100%",
+        strings: {
+        "en": {
+        'live': 'LIVE - MEGA TELEVISIÓN HD'},
+        },
+        });
+	
+	
+	}
+	
 
 }
 function playerVolDown(){
