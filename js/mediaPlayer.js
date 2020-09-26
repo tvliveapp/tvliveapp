@@ -62,6 +62,7 @@ function loadChannel(chnUrl){
     }
        }
        );
+	}
 function playerVolDown(){
 	console.log('volDonw');
 	vidPlayer.getElementsByTagName('video')[0].volume=0;
