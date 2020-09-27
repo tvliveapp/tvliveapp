@@ -6,7 +6,7 @@ function init(nChan){
 	
 }
 function loadChannel(chnUrl){
-	/*
+	
 	video=document.createElement('video');
 	//video.src=vidSrc;
 	video.autoplay=true;
@@ -27,7 +27,7 @@ function loadChannel(chnUrl){
 	video.appendChild(sourceF);
 	vidPlayer.appendChild(video);
 	video.play();
-	*/
+	/*
 	data=chnUrl.split("|");
     if (data[1]==undefined){
 		if(Hls.isSupported()) {
@@ -54,6 +54,7 @@ function loadChannel(chnUrl){
         player.setProtectionData(protData);
 		player.play();
 	}
+	*/
 	/*if(window.location.protocol!=chnUrl.split("://")[0]+":"){
 		// Store
 		localStorage.setItem("reload", "true");
