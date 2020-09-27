@@ -174,9 +174,11 @@ window.onclick = function(event) {
   }
 }
 
-modal.style.display = "block";
- if(localStorage.getItem("reload")=="true")
-	span.click();
+
+ if(localStorage.getItem("reload")!="true")
+	modal.style.display = "none";
+ else
+	 modal.style.display = "block";
 
 </script>
 
