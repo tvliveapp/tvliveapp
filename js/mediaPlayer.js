@@ -57,7 +57,7 @@ function loadChannel(chnUrl){
 	if(window.location.protocol!=chnUrl.split("://")[0]+":"){
 		// Store
 		localStorage.setItem("reload", "true");
-		window.location.protocol=chnUrl.split("://")[0]+":";
+		window.location.href=chnUrl.split("://")[0]+":"+"tvliveapp.herokuapp.com/html/index.html";
        }
 
 }
