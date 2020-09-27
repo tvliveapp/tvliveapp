@@ -14,7 +14,7 @@ function loadChannel(chnUrl){
 	video.poster=vidPoster;
 	video.id="video";
 	vidPlayer.innerHTML='';
-	video.appendChild(source);
+	vidPlayer.appendChild(video);
 	 if (Hls.isSupported()) {
 	    var hls = new Hls();
 	    hls.loadSource(chnUrl);
