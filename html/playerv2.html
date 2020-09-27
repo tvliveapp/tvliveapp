@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<link rel="stylesheet" type = "text/css" href="../css/modal.css">
+<link rel="stylesheet" type = "text/css" href="../css/video.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <head>
+        <title>Dash.js Rocks</title>
+        <style>
+            video {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <video id="player" autoplay loop ></video>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/3.1.3/dash.all.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+        <script>
+		
+	function loadVid(chnUrl)
+	{
+		data=chnUrl.split("|");
+    if (data[1]==undefined){
+		if(Hls.isSupported()) {
+			var video = document.getElementById('player');
+			var hls = new Hls();
+			hls.loadSource(data[0]);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			  video.play();
+		  });
+		}
+	}else{
+		const protData = {
+            "com.widevine.alpha": {
+                "serverURL": data[1]
+            }
+        };
+        var video,
+            player,
+            url = data[10]
+        video = document.getElementById('player');
+		
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+		player.play();
+		
+	}
+	
+	}
+/*		
+    function loadMpd() {
+		
+		const protData = {
+            "com.widevine.alpha": {
+                "serverURL": "https://sv.tsnt.xyz/cv.php"
+            }
+        };
+        var video,
+            player,
+            url = "https://chromecast.cvattv.com.ar/live/c3eds/FoxSports/SA_Live_dash_enc_2A/FoxSports.mpd";
+
+        video = document.querySelector("video");
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+		player.play();
+		
+	}
+	function loadM3u(){
+		if(Hls.isSupported()) {
+    var video = document.getElementById('video');
+    var hls = new Hls();
+    hls.loadSource('http://173.212.247.99/hls/tvec2.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ }
+ 
+    }*/
+	//loadM3u();
+	
+	if(window.location.hash!=""){
+		url=window.location.hash.replace("#","");
+		loadVid(url);
+	}else
+		loadVid("http://173.212.247.99/hls/tvec2.m3u8");
+	
+	// Retrieve
+     url=localStorage.getItem("lastUrl");
+	 if(url!="")
+		loadVid(url);
+	
+	function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        
+
+        
+        // Listen to messages from parent window
+        bindEvent(window, 'message', function (e) {
+            console.log (e.data);
+			loadVid(e.data);
+        });
+
+        
+
+		
+	//http://173.212.247.99/hls/tvec2.m3u8
+</script>
+		</script>
+        
+    </body>
+</html>
