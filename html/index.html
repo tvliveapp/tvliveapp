@@ -44,8 +44,7 @@ if(isChrome){
 		opt="?autoplay=1&mute=1";
 		src="https://www.youtube.com/embed/"+vid[ getRndInteger(0,6)]+opt
 		 document.getElementById("frame2").src=src;   
-	}else
-		localStorage.setItem("reload", "");
+	}
 </script>
 <div id='playerCtn'>
 <video autoplay poster="https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif" loop id="player">
@@ -179,7 +178,7 @@ window.onclick = function(event) {
 	modal.style.display = "none";
  else
 	 modal.style.display = "block";
-
+localStorage.setItem("reload", "");
 </script>
 
 
