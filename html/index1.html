@@ -1,78 +1,87 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-	<script data-ad-client="ca-pub-7126179415054673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>	
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fullscreen Video</title>
-        <meta name="description" content="">
+        <title>DASH plugin</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-		<script data-ad-client="ca-pub-7126179415054673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    </head>
+
+        <!-- Styling for standalone demo page - feel free to remove -->
+        <style type="text/css">
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        .container, h1 {
+            width: 100%;
+            max-width: 60rem;
+            margin: 1em auto;
+        }
+        .flowplayer {
+            width: 100%;
+        }
+        </style>
+
+        <!-- Flowplayer skin -->
+        <link rel="stylesheet" href="https://cdn.flowplayer.com/releases/native/stable/style/flowplayer.css" />
+        
+            </head>
     <body>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- canal2 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7126179415054673"
-     data-ad-slot="8465980823"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+        <h1>DASH plugin</h1>
+        <div class="container">
+
+                        <div id="player"></div>
+                    </div>
+    
+        <!-- Flowplayer library & plugins -->
+                <script type="text/javascript" charset="utf-8" async="" src="https://ssl.p.jwpcdn.com/player/v/8.17.1/jwpsrv.js"></script>
+<script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"> </script>
+<script charset="utf-8" src="https://ssl.p.jwpcdn.com/player/v/8.17.1/jwplayer.core.controls.js"></script>
+<script charset="utf-8" src="/https://ssl.p.jwpcdn.com/player/v/8.17.1/provider.shaka.js"></script>
+<script> jwplayer.key='XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
+</script>               
+			   <!-- Custom javascript for this demo -->
+                <script>
+
+        var playerInstance=jwplayer("player"); 
+        playerInstance.setup( {
+            playlist: [ {
+            title : "TVLIVEAPP",
+             description: "FREE TV",
+             image: "https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif",
+                "sources": [ 
+				{
+                    "default": false,
+"file":'http://tvliveapp-proxy.herokuapp.com/httpsaHR0cHM6Ly9iaXRtb3Zpbi1hLmFrYW1haWhkLm5ldC9jb250ZW50L01JMjAxMTA5MjEwMDg0XzEvbXBkcy9mMDhlODBkYS1iZjFkLTRlM2QtODg5OS1mMGY2MTU1ZjZlZmEubXBk',
+"drm": {
+                       "widevine": {
+                            "url": "https://sv.tsnt.xyz/cv.php"
+                       }
+                   }
+                   , "label": "0", "type": "mpd"
+               }
+				,{
+                    "default": false,
+"file":'https://chromecast.cvattv.com.ar/live/c3eds/DiscoveryHD/SA_Live_dash_enc/DiscoveryHD.mp',
+"drm": {
+                       "widevine": {
+                            "url": "https://sv.tsnt.xyz/cv.php"
+                       }
+                   }
+                   , "label": "0", "type": "mpd"
+               }
+			   ]
+           }
+           ], width: "100%",  height: "100%", aspectratio: "16:9", autostart: true, abouttext: "MEGA TELEVISIÓN HD",	 	 
+             aboutlink: "http://www.megatelevisionhd.tk", cast: {}
+           ,
+          skin: {
+       name: "bekle",
+       active: "orange",
+       inactive: "pink",
+       background: ""
+    }
+       }
+       );
 </script>
-    <div class="fullscreen-bg">
-        <video loop  autoplay poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" class="fullscreen-bg__video">
-            <source src="http://iptvpro.premium-itv.com:8789/wLgupJh9UP/mEiFLXNZRx/23615" >
-            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm">
-            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg">
-        </video>
-    </div>
-
-    <div class="content">
-        <h1 onclick='openFullscreen();'>Full screen HTML5 video background </h1>
-       
-    </div>
-
-	<script>
-/* Get the documentElement (<html>) to display the page in fullscreen */
-var elem = document.documentElement;
-
-/* View in fullscreen */
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
-
-/* Close fullscreen */
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) { /* Firefox */
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE/Edge */
-    document.msExitFullscreen();
-  }
-}
-
-
-window.onbeforeunload = function () {
-    alert( "Do you really want to close?");
-};
-</script>
-
-
-	
-    </body>
+                    </body>
 </html>
