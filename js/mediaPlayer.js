@@ -54,11 +54,11 @@ function loadChannel(chnUrl){
         player.setProtectionData(protData);
 		player.play();
 	}
-	if(window.location.protocol!=chnUrl.split("://")[0]+":"){
+	/*if(window.location.protocol!=chnUrl.split("://")[0]+":"){
 		// Store
 		localStorage.setItem("reload", "true");
 		window.location.href=chnUrl.split("://")[0]+":"+"tvliveapp.herokuapp.com/html/index.html";
-       }
+       }*/
 
 }
 function playerVolDown(){
