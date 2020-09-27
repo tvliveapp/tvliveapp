@@ -12,6 +12,39 @@ function loadChannel(chnUrl){
 	video.autoplay=true;
 	video.loop=true;
 	video.poster=vidPoster;
+	video.id="video";
+	vidPlayer.innerHTML='';
+	video.appendChild(source);
+	 if (Hls.isSupported()) {
+	    var hls = new Hls();
+	    hls.loadSource(chnUrl);
+	    hls.attachMedia(video);
+	    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+	      video.play();
+	    });
+	  }
+	  // hls.js is not supported on platforms that do not have Media Source
+	  // Extensions (MSE) enabled.
+	  //
+	  // When the browser has built-in HLS support (check using `canPlayType`),
+	  // we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video
+	  // element through the `src` property. This is using the built-in support
+	  // of the plain video element, without using hls.js.
+	  //
+	  // Note: it would be more normal to wait on the 'canplay' event below however
+	  // on Safari (where you are most likely to find built-in HLS support) the
+	  // video.src URL must be on the user-driven white-list before a 'canplay'
+	  // event will be emitted; the last video event that can be reliably
+	  // listened-for when the URL is not on the white-list is 'loadedmetadata'.
+	  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+	    video.src = chnUrl;
+	    video.addEventListener('loadedmetadata', function() {
+	      video.play();
+	    });
+	  }
+	
+	
+	/*
 	//video.classList.add('video-js');
 	source=document.createElement('source');
 	sourceF=document.createElement('source');
@@ -27,6 +60,7 @@ function loadChannel(chnUrl){
 	video.appendChild(sourceF);
 	vidPlayer.appendChild(video);
 	video.play();
+	*/
 	/*
 	data=chnUrl.split("|");
     if (data[1]==undefined){
