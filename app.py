@@ -22,19 +22,21 @@ import git
 import wiz1Epg
 import dailysportEpg
 
-
 port = int(os.environ.get("PORT", 80))	 
 
 PORT_NUMBER = port
-
+mimetype=''
 #This class will handles any incoming request from
 #the browser 
 channelList=[]
 def getStream(id):
 	if id.find("dailysport")>=0:
 		return dailysportEpg.getStreamLink(id.replace("dailysport",""))
-
+def getUrl(url):
+	return proxi.get(url)
+	
 def action(var, val):
+	global mimetype
 	if var=='channelList':
 		return  channelList
 	if var=='updatechannelList':
@@ -51,6 +53,8 @@ def action(var, val):
 		return val
 	if var=='getStream':
 		return getStream(val)
+	if var=='proxi':
+		return getUrl(val)
 	else:
 		return "ok"
 class myHandler(BaseHTTPRequestHandler):
@@ -76,10 +80,11 @@ class myHandler(BaseHTTPRequestHandler):
 			if self.path.find('?')>=0:
 				var,val=self.path.split('?')[-1].split('=')
 				print(var,val)
+				mimetype='text/html'
 				#print data
 				data=action(var,val)
 				sendReply = True
-				mimetype='text/html'
+				
 				
 				#self.path="/index.html"
 				#print query_components
