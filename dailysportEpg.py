@@ -109,30 +109,32 @@ def updateDailysportEpg():
 def getStreamLink(chn):		
 	sp1=""
 	#print(channelEpg)
-	if 1:
-		url='https://dailysport.pw/c'+str(chn)+'.php'
-		response = requests.get(url)
-		b64=1
-		
-		
-		if response.status_code==200:
-			
-			
-			ini='window.atob("'
-			fin='")'
+	try:
+		if 1:
+			url='https://dailysport.pw/c'+str(chn)+'.php'
+			response = requests.get(url)
+			b64=1
 
-			sp1=subString(ini,fin,response.text)
-			if sp1==None:
-				ini='source:'
-				fin="',"
-				sp1=subStringL(ini,fin,response.text).replace("'",'').replace(' ','')
-				b64=0
-			
-			if b64==1:
-					sp1=decodeBase64(sp1)
-			print(sp1)
-				
-			
+
+			if response.status_code==200:
+
+
+				ini='window.atob("'
+				fin='")'
+
+				sp1=subString(ini,fin,response.text)
+				if sp1==None:
+					ini='source:'
+					fin="',"
+					sp1=subStringL(ini,fin,response.text).replace("'",'').replace(' ','')
+					b64=0
+
+				if b64==1:
+						sp1=decodeBase64(sp1)
+				print(sp1)
+
+	except:
+		pass
 	return sp1
 updateDailysportEpg()	
 getStreamLink(1)
