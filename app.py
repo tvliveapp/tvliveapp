@@ -18,7 +18,7 @@ import time
 import json
 
 #git
-import git
+#import git
 import wiz1Epg
 import dailysportEpg
 
@@ -49,7 +49,7 @@ def action(var, val):
 		f.close()
 		return d
 	if var=='myIP':
-		git.updateIps(val)
+		#git.updateIps(val)
 		return val
 	if var=='getStream':
 		return getStream(val)
