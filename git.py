@@ -46,7 +46,8 @@ def updateIps(ip):
 from github import Github
 import base64
 
-g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
+#g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
+g = Github("a59f0df2ff44f069463465a9ff22f50b4751ff3f")
 repo = g.get_user().get_repo("channels")
 contents = repo.get_contents("spZone.json")
 
