@@ -31,7 +31,8 @@ mimetype=''
 channelList=[]
 def getStream(id):
 	if id.find("dailysport")>=0:
-		return dailysportEpg.getStreamLink(id.replace("dailysport",""))
+		#return dailysportEpg.getStreamLink(id.replace("dailysport",""))
+		return ""
 def getUrl(url):
 	#return proxi.get(url)
 	pass
