@@ -47,7 +47,7 @@ from github import Github
 import base64
 
 #g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
-g = Github("36d78a32b77ed4ee478d77951ff9570a26d4c560")
+g = Github("efb525a661ebb08b103db025a7b4b0397b4637b0")
 repo = g.get_user().get_repo("channels")
 contents = repo.get_contents("spZone.json")
 
