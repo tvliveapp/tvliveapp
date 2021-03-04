@@ -67,8 +67,15 @@ function getVideoLink(source,sLink){
 }*/
 
 function getVideoLink(sLink,elem){
-	if(sLink!='')
-		localStorage.setItem('lastSource',sLink);
+	if(sLink!=''){
+		if(allChannels[elem.id].srclink=='fcn'){
+			xhttp.open("GET", "ajax_info.txt", false);
+			xhttp.send();
+			localStorage.setItem('lastSource',xhttp.responseText);
+		}else
+			localStorage.setItem('lastSource',sLink);
+	
+	}
 	updateChannel("?player=1");
 	//  loadVideo(resp);
       console.log(sLink); 
