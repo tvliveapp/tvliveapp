@@ -69,7 +69,7 @@ function getVideoLink(source,sLink){
 function getVideoLink(sLink,elem){
 	if(sLink!=''){
 		if(allChannels[elem.id].srclink=='fcn'){
-			xhttp.open("GET", "ajax_info.txt", false);
+			xhttp.open("GET", sLink, false);
 			xhttp.send();
 			localStorage.setItem('lastSource',xhttp.responseText);
 		}else
