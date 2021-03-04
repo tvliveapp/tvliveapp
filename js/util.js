@@ -69,6 +69,7 @@ function getVideoLink(source,sLink){
 function getVideoLink(sLink,elem){
 	if(sLink!=''){
 		if(allChannels[elem.id].srclink=='fcn'){
+			var xhttp = new XMLHttpRequest();
 			xhttp.open("GET", sLink, false);
 			xhttp.send();
 			localStorage.setItem('lastSource',xhttp.responseText);
