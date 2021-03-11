@@ -29,7 +29,9 @@ if(md.os()=='AndroidOS'){
 }
 	
 	
-
+pass= prompt("Ingrese la clave", "");
+if (pass!='leo1')
+	window.location.href=window.location.href;
 var isOpen=false;
 console.log(window.location.search.substr(1));
 fetch(url)
