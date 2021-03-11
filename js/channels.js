@@ -192,6 +192,16 @@ function updateChannel(chnUrl,ele){
 	console.log("update channel");
 	vidSrc=chnUrl.replace('/?player|','');
 	lasChannel=ele.name.replace("ch","");
+	if(chnUrl!=''){
+		//if(allChannels[elem.id].srclink!='/'){
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", chnUrl+'&web=True', false);
+			xhttp.send();
+			//localStorage.setItem('lastSource',xhttp.responseText);
+		//}else
+		//	localStorage.setItem('lastSource',sLink+'&web=True');
+	vidSrc=xhttp.responseText;
+	}
 	saveData();
 	loadChannel(vidSrc);
 }
