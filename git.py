@@ -6,7 +6,7 @@ from github import Github
 from github import InputGitTreeElement
 url="https://raw.githubusercontent.com/tvliveapp/channels/master/ips.json"
 #g = Github("tvliveapp@protonmail.ch", "tvliveapp@protonmail.ch")
-g = Github("a59f0df2ff44f069463465a9ff22f50b4751ff3f")
+g = Github("6a07e7310de4bdb366cabb2a94b9205b9119ffe8")
 
 ips=[]
 response=requests.get(url)
