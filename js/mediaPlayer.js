@@ -47,10 +47,11 @@ function loadChannel(chnUrl){
 	}else{
 		data=chnUrl.split("|");
 		const protData = {
-            	"com.widevine.alpha": {
-                	"serverURL": data[1]
-            	}
-		var video,          	player;
+            		"com.widevine.alpha": {
+                		"serverURL": data[1]
+            		}
+		};
+		var video, player;
             	url = data[0];
 		video = document.getElementById('player');
 		player = dashjs.MediaPlayer().create();
