@@ -1,4 +1,6 @@
 chnsUrl = 'https://raw.githubusercontent.com/tvliveapp/channels/master/spZone.json';
+chnsm3u = 'https://raw.githubusercontent.com/lfrenteriax/channels/master/nuevaLista.m3u';
+
 var allChannels;
 var chnContainer;
 var chnLbl;
@@ -21,6 +23,8 @@ function loadChannels(cnt,play,label){
 	chnContainer.setAttribute('onmousemove','myMove()');
 	vidPlayer=play;
 	optionLst=document.getElementById('optionLst');
+	if(iptvPlayer)
+		chnsUrl=chnsm3u;
 	fetch(chnsUrl)
 	  .then(function(response) {
 		response.text().then(function(text) {
@@ -32,17 +36,55 @@ function loadChannels(cnt,play,label){
 	
 }
 
+
+function m3utojson(plain) {
+	var playlist = M3U.parse(plain);
+	return playlist;
+    /*return m3u
+        .replace('#EXTM3U', '')
+        .split('#EXTINF:0,')
+        .slice(1)
+        .map(function(str, index) {
+            var channel = str.split('\n').slice(0,-1);
+
+            return {
+                "id": index + 1,
+                "number": index + 1,
+                "title": channel[0],
+                "tv_logo": "",
+                "tv_categories": [2],
+                "stream_link": channel[1],
+                "announce": "",
+                "volume_shift": 0
+            };
+        });*/
+}
+
+
+
 /*************/
 function done(resp) {
     
-  allChannels =JSON.parse(resp);
-  
-  Object.keys(allChannels).forEach(function(id) {
+  if(iptvPlayer){
+  	allChannels =m3utojson(resp);
+  	allChannels.forEach(function(ch) {
 		//allChannels[source].msg.channels.forEach(function(element) {
 		  //console.log(id);
-		  addItem(id,allChannels[id]);
+		  addItem(ch["title"].split(',')[1],ch);
 		
 	});
+  }
+  	
+  else{
+  	  allChannels =JSON.parse(resp);
+  
+	  Object.keys(allChannels).forEach(function(id) {
+			//allChannels[source].msg.channels.forEach(function(element) {
+			  //console.log(id);
+			  addItem(id,allChannels[id]);
+			
+		});
+	}
 	channelList=chnContainer.getElementsByTagName('a');
    loadPlayer(false,nOffChannels);
    
@@ -109,6 +151,11 @@ function addItem(source,data){
 	a = document.createElement("a");
 	a.href='#';
 	sLink=data.stream_link
+	if(sLink==undefined){
+		sLink=data.file
+		data.channel_name=data.title.split(',')[1]
+	}
+		
 	f="chnEpg(this);";
 	a.setAttribute('onclick',f);
 	f="updateChannel('"+sLink+"',this);";
@@ -193,14 +240,17 @@ function updateChannel(chnUrl,ele){
 	vidSrc=chnUrl.replace('/?player|','');
 	lasChannel=ele.name.replace("ch","");
 	if(chnUrl!=''){
-		//if(allChannels[elem.id].srclink!='/'){
+		if(chnUrl.search('tvliveapp-proxy')>=0){
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("GET", chnUrl+'&web=True', false);
 			xhttp.send();
 			//localStorage.setItem('lastSource',xhttp.responseText);
 		//}else
 		//	localStorage.setItem('lastSource',sLink+'&web=True');
-	vidSrc=xhttp.responseText;
+			vidSrc=xhttp.responseText;
+		}else
+			vidSrc=chnUrl;
+
 	}
 	saveData();
 	loadChannel(vidSrc);
