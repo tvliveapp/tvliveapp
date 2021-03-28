@@ -28,7 +28,7 @@
 		if(name=="loadM3u"){
 			url=data.split('|')[1];
 			id=data.split('|')[0];
-			loadM3U(id,decodeURI(url); 	 
+			loadM3U(id,decodeURI(url)); 	 
 		}
         else if(name!="ack"){
 			el = document.getElementById(name);
