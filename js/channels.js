@@ -23,17 +23,20 @@ function loadChannels(cnt,play,label){
 	chnContainer.setAttribute('onmousemove','myMove()');
 	vidPlayer=play;
 	optionLst=document.getElementById('optionLst');
-	if(iptvPlayer)
-		chnsUrl=chnsm3u;
-	fetch(chnsUrl)
-	  .then(function(response) {
-		response.text().then(function(text) {
-		  done(text);
-		});
-	  }).catch(function() {
-        console.log("error");
-    });	
+	if(iptvPlayer){
+		if(null!=localStorage.getItem("chnsm3u")){
+			chnsUrl=localStorage.getItem("chnsm3u");
 	
+			fetch(chnsUrl)
+			  .then(function(response) {
+				response.text().then(function(text) {
+				  done(text);
+				});
+			  }).catch(function() {
+		        console.log("error");
+		    });
+		}	
+	}
 }
 
 
