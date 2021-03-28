@@ -36,6 +36,15 @@ function loadChannels(cnt,play,label){
 		        console.log("error");
 		    });
 		}	
+	}else{
+		fetch(chnsUrl)
+			  .then(function(response) {
+				response.text().then(function(text) {
+				  done(text);
+				});
+			  }).catch(function() {
+		        console.log("error");
+		    });
 	}
 }
 
