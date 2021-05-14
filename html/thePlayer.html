@@ -3,15 +3,17 @@
     <video id="video"></video>
     <script src="http://cdn.jsdelivr.net/npm/hls.js@0.14.2/dist/hls.min.js" async></script>
     <script>
-        if (Hls.isSupported()) {
-  var video = document.getElementById('video');
-  var hls = new Hls();
-
-  hls.attachMedia(video);
-  hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-    hls.loadSource('http://stream.tvtap.live:8081/live/it-raisportplus.stream/chunks.m3u8');
-  });
-}
+     function load(url){
+      if (Hls.isSupported()) {
+          var video = document.getElementById('video');
+          var hls = new Hls();
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+               hls.loadSource(url);
+          });
+      }
+     }
+     load('http://stream.tvtap.live:8081/live/it-raisportplus.stream/chunks.m3u8');
    </script>
   </body>
 <html>
