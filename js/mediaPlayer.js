@@ -9,7 +9,9 @@ function loadChannel(chnUrl){
 	
 	//video=document.createElement('video');
 	player=document.getElementById('player');
+	
 	player.children[0].src=chnUrl;
+	player.children[0].type='type="application/x-mpegURL"';
 	player.load();
 	//video.src=vidSrc;
 	/*
