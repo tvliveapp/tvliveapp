@@ -8,7 +8,7 @@ function init(nChan){
 function loadChannel(chnUrl){
 	
 	//video=document.createElement('video');
-	video=document.getElementById('player');
+	player=document.getElementById('player');
 	player.children[0].src=chnUrl;
 	player.load();
 	//video.src=vidSrc;
