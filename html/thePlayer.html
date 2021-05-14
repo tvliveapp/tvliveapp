@@ -1,11 +1,11 @@
- <html>
+  <html>
   <body>
     <video id="video"></video>
     <script src="http://cdn.jsdelivr.net/npm/hls.js@0.14.2/dist/hls.min.js" ></script>
     <script>
      function load(url){
       if (Hls.isSupported()) {
-          var video = document.getElementById('video');
+          var video = document.getElementById("video");
           var hls = new Hls();
           hls.attachMedia(video);
           hls.on(Hls.Events.MEDIA_ATTACHED, function () {
@@ -13,7 +13,7 @@
           });
       }
      }
-     load('http://134.19.182.131:8080/vdg3_2.m3u8?h=ec535ff7842f7c504e1645e04be5f72b');
+     load("http://134.19.182.131:8080/vdg3_2.m3u8?h=ec535ff7842f7c504e1645e04be5f72b");
    </script>
   </body>
 <html>
