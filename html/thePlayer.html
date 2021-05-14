@@ -1,22 +1,25 @@
-<html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" async></script>
-  <meta name="viewport" content="width=device-width">
-</head>
-  <body onload="onLoad()">
-    <video id="video"controls="" autoplay="" name="media"><source src="http://stream.tvtap.live:8081/live/it-skysportserieA.stream/chunks.m3u8" type="application/vnd.apple.mpegurl"></video>
-  </body>
-  <script>
-  function onLoad(){
-    video=document.getElementById('video');
-    if (Hls.isSupported()) {
-	    var hls = new Hls();
-	    hls.loadSource("http://stream.tvtap.live:8081/live/it-skysportserieA.stream/chunks.m3u");
-	    hls.attachMedia(video);
-	    hls.on(Hls.Events.MANIFEST_PARSED, function() {
-	      video.play();
-	    });
-	  }
-  }
-  </script>
-</html>
+ <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset=utf-8 />
+    <title>Your title</title>
+      
+    
+      <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+      <script src="https://unpkg.com/video.js/dist/video.js"></script>
+      <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+       
+    </head>
+    <body>
+      <video id="my_video_1" class="video-js vjs-fluid vjs-default-skin" controls preload="auto"
+      data-setup='{}'>
+        <source src="http://stream.tvtap.live:8081/live/it-raisportplus.stream/chunks.m3u8" type="application/x-mpegURL">
+      </video>
+      
+    <script>
+    var player = videojs('my_video_1');
+    player.play();
+    </script>
+      
+    </body>
+    </html>
