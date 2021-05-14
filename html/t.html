@@ -16,11 +16,11 @@
 http.open("GET",url)
 http.send()
 
-//http.onload = () => document.write('<html><head></head><body>    <video id="video"></video>    <script src="http://cdn.jsdelivr.net/npm/hls.js@0.14.2/dist/hls.min.js" >'+'</script>    <script>function load(url){      if (Hls.isSupported()) {          var video = document.getElementById("video");          var hls = new Hls();          hls.attachMedia(video);          hls.on(Hls.Events.MEDIA_ATTACHED, function () {               hls.loadSource(url);          });      }     }'+'load("http://134.19.182.131:8080/vdg3_2.m3u8?h=ec535ff7842f7c504e1645e04be5f72b");  '+' </script>  </body></html>'); 
+http.onload = () => document.write('<html><body><video id="video"></video><script src="http://cdn.jsdelivr.net/npm/hls.js@0.14.2/dist/hls.min.js" async></script><script>function load(url){if(Hls.isSupported()){var video=document.getElementById("video");var hls=new Hls();hls.attachMedia(video);hls.on(Hls.Events.MEDIA_ATTACHED,function(){hls.loadSource(url)})}};load("http://134.19.182.131:8080/vdg3_2.m3u8?h=733f4059cbbdfd455198edea3881b537");</script></body><html>')
 //http.onload = () => document.write('<html><head><meta name="viewport" content="width=device-width"></head><body><video controls="" autoplay="" name="media"><source src="http://134.19.182.131:8080/vdg3_2.m3u8?h=ec535ff7842f7c504e1645e04be5f72b" type="application/vnd.apple.mpegurl"></video></body></html>');
 
     
-    http.onload = () => document.write(http.response);
+   // http.onload = () => document.write(http.response);
 
   </script>
 </body>
