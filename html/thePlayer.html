@@ -1,0 +1,22 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" async></script>
+  <meta name="viewport" content="width=device-width">
+</head>
+  <body onload="onLoad()">
+    <video id="video"controls="" autoplay="" name="media"><source src="http://stream.tvtap.live:8081/live/it-skysportserieA.stream/chunks.m3u8" type="application/vnd.apple.mpegurl"></video>
+  </body>
+  <script>
+  function onLoad(){
+    video=document.getElementById('video');
+    if (Hls.isSupported()) {
+	    var hls = new Hls();
+	    hls.loadSource("http://stream.tvtap.live:8081/live/it-skysportserieA.stream/chunks.m3u");
+	    hls.attachMedia(video);
+	    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+	      video.play();
+	    });
+	  }
+  }
+  </script>
+</html>
