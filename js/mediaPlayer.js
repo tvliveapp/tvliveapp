@@ -7,8 +7,12 @@ function init(nChan){
 }
 function loadChannel(chnUrl){
 	
-	video=document.createElement('video');
+	//video=document.createElement('video');
+	video=document.getElementById('player');
+	player.children[0].src='chnUrl';
+	player.load();
 	//video.src=vidSrc;
+	/*
 	video.autoplay=true;
 	video.loop=true;
 	video.poster=vidPoster;
@@ -59,6 +63,9 @@ function loadChannel(chnUrl){
 		player.setProtectionData(protData);
 		player.play();
 	}
+	*/
+	
+	
 	/*
 	//video.classList.add('video-js');
 	source=document.createElement('source');
