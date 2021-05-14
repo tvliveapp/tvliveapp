@@ -11,7 +11,7 @@ function loadChannel(chnUrl){
 	player=document.getElementById('player');
 	
 	player.children[0].src=chnUrl;
-	player.children[0].type='type="application/x-mpegURL"';
+	player.children[0].type='application/vnd.apple.mpegurl';
 	player.load();
 	//video.src=vidSrc;
 	/*
