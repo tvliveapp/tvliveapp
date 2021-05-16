@@ -19,7 +19,7 @@ import json
 
 #git
 #import git
-import wiz1Epg
+#import wiz1Epg
 #import dailysportEpg
 
 port = int(os.environ.get("PORT", 80))	 
@@ -72,7 +72,7 @@ class myHandler(BaseHTTPRequestHandler):
 		try:
 		
 			if self.path=="/":  #127.0.0.1:5000/
-				wiz1Epg.updateWizEpg()
+				#wiz1Epg.updateWizEpg()
 				#dailysportEpg.updateDailysportEpg()
 				name="html/mediaplayer.html" #127.0.0.1:5000/index.html
 			else:
